@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mini_project/teste/positive_players.dart';
+import 'package:mini_project/data/PositivePlayers.dart';
 import 'dart:convert';
+
+import 'package:mini_project/views/PositivePlayersPage/Page.dart';
 
 
 void main() {
