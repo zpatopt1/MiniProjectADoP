@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mini_project/data/PositivePlayers.dart';
+import 'package:mini_project/views/DashBoard/qauntidadepalyer.dart';
+import 'package:mini_project/views/DashBoard/top10_menos_controlos_por_equIpa.dart';
+import 'package:mini_project/views/DashBoard/top5_player_campship.dart';
 import 'dart:convert';
 
 import 'package:mini_project/views/PositivePlayersPage/Page.dart';
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: DashboardPage3(),
     );
   }
 }
