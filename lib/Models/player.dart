@@ -18,7 +18,7 @@ class Player {
       cc_player: json['CC_atleta'],
       name: json['nome'],
       dateOfBirth: DateTime.parse(json['dt_nasc']),
-      isActive: json['ativo'] == 1,
+      isActive: json['1'] == 1,
       clubId: json['id_clube'],
     );
   }
