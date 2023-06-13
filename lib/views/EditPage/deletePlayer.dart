@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+
+import '../../data/deletePlayerAPI.dart';
 
 class PlayerDeletePage extends StatefulWidget {
   @override
@@ -9,23 +10,9 @@ class PlayerDeletePage extends StatefulWidget {
 class _PlayerDeletePageState extends State<PlayerDeletePage> {
   final TextEditingController _playerIdController = TextEditingController();
 
-  void deletePlayer() async {
-    final String apiUrl = 'http://localhost:3000/players';
+  void deletePlayer() {
     final int playerId = int.parse(_playerIdController.text);
-
-    try {
-      final response = await http.delete(
-        Uri.parse('$apiUrl/$playerId'),
-      );
-
-      if (response.statusCode == 200) {
-        showSuccessMessage('Jogador removido com sucesso');
-      } else {
-        print('Erro ao remover jogador');
-      }
-    } catch (e) {
-      print('Erro na conexão com a API: $e');
-    }
+    PlayerDeleteData.deletePlayer(playerId);
   }
 
   void showSuccessMessage(String message) {

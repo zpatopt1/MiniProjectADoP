@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import '../../Models/player.dart';
+import '../../data/editPlayerAPI.dart';
 
 class EditPlayerPage extends StatefulWidget {
   @override
@@ -8,11 +8,76 @@ class EditPlayerPage extends StatefulWidget {
 }
 
 class _EditPlayerPageState extends State<EditPlayerPage> {
-  TextEditingController idController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController clubController = TextEditingController();
-  TextEditingController activeController = TextEditingController();
-  TextEditingController birthdateController = TextEditingController();
+  final TextEditingController idController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController clubController = TextEditingController();
+  final TextEditingController activeController = TextEditingController();
+  final TextEditingController birthdateController = TextEditingController();
+
+  void updatePlayerData() {
+    final playerId = int.tryParse(idController.text);
+    final name = nameController.text;
+    final clubId = int.tryParse(clubController.text);
+    final active = activeController.text == '1';
+    final birthdate = birthdateController.text;
+
+    if (playerId == null || clubId == null) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Error'),
+          content: Text('Invalid input. Please enter valid Player ID and Club ID.'),
+          actions: [
+            TextButton(
+              child: Text('OK'),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
+    final player = Player(
+      cc_player: playerId,
+      name: name,
+      dateOfBirth: DateTime.tryParse(birthdate) ?? DateTime.now(),
+      isActive: active,
+      clubId: clubId,
+    );
+
+    final playerData = PlayerData();
+
+    playerData.updateData(player).then((_) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Success'),
+          content: Text('Player updated successfully'),
+          actions: [
+            TextButton(
+              child: Text('OK'),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        ),
+      );
+    }).catchError((error) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Error'),
+          content: Text('Failed to update player data'),
+          actions: [
+            TextButton(
+              child: Text('OK'),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,61 +115,11 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
             SizedBox(height: 16.0),
             ElevatedButton(
               child: Text('Update'),
-              onPressed: () => updatePlayerData(context),
+              onPressed: updatePlayerData,
             ),
           ],
         ),
       ),
     );
-  }
-
-  void updatePlayerData(BuildContext context) async {
-    final playerId = int.parse(idController.text);
-    final name = nameController.text;
-    final clubId = int.parse(clubController.text);
-    final active = int.parse(activeController.text) == 1 ? 1 : 0;
-    final birthdate = birthdateController.text;
-
-    final response = await http.put(
-      Uri.parse('http://localhost:3000/players'),
-      body: json.encode({
-        'cc_atleta': playerId,
-        'id_clube': clubId,
-        'nome': name,
-        'ativo': active,
-        'dt_nasc': birthdate,
-      }),
-      headers: {'Content-Type': 'application/json'},
-    );
-
-    if (response.statusCode == 200) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Success'),
-          content: Text('Player updated successfully'),
-          actions: [
-            TextButton(
-              child: Text('OK'),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        ),
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Error'),
-          content: Text('Failed to update player data'),
-          actions: [
-            TextButton(
-              child: Text('OK'),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        ),
-      );
-    }
   }
 }

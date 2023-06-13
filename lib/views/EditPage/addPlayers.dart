@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+
+import '../../data/addPlayerAPI.dart';
 
 class PlayerAddPage extends StatefulWidget {
   @override
@@ -13,8 +13,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
   final TextEditingController _activeController = TextEditingController();
   final TextEditingController _birthdateController = TextEditingController();
 
-  void addPlayer() async {
-    final String apiUrl = 'http://localhost:3000/players';
+  void addPlayer() {
     final Map<String, dynamic> playerData = {
       'id_clube': int.parse(_clubIdController.text),
       'nome': _nameController.text,
@@ -22,42 +21,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
       'dt_nasc': _birthdateController.text,
     };
 
-    try {
-      final response = await http.post(
-        Uri.parse(apiUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(playerData),
-      );
-
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-        showSuccessMessage(responseData['message']);
-      } else {
-        print('Erro ao adicionar jogador');
-      }
-    } catch (e) {
-      print('Erro na conexão com a API: $e');
-    }
-  }
-
-  void showSuccessMessage(String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Sucesso'),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Fechar'),
-            ),
-          ],
-        );
-      },
-    );
+    PlayerAddData.addPlayer(playerData);
   }
 
   @override

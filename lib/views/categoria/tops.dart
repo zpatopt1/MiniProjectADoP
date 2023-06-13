@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DashBoard/jogadorSemControlo30DIAS.dart';
-import '../DashBoard/quantidadeJogadoresPorClube.dart';
+import '../DashBoard/top10_menos_controlos_por_equIpa.dart';
 import '../DashBoard/top5_player_campship.dart';
-import '../categoria/tops.dart';
 
-class HomePage extends StatelessWidget {
+class TopsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,26 +59,18 @@ class HomePage extends StatelessWidget {
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
-                  itemDashboard(
-                      'Jogadores', CupertinoIcons.gamecontroller, Colors.black,
-                      () {
+                  itemDashboard('Top 5 Jogadores Por Competição',
+                      CupertinoIcons.gamecontroller, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage1()),
+                      MaterialPageRoute(builder: (context) => DashboardPage2()),
                     );
                   }),
-                  itemDashboard('Top', CupertinoIcons.up_arrow, Colors.black,
-                      () {
+                  itemDashboard('Top 10 Jogadores, com menos registos',
+                      CupertinoIcons.up_arrow, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TopsPage()),
-                    );
-                  }),
-                  itemDashboard(
-                      '30 Dias', CupertinoIcons.calendar, Colors.black, () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DashboardPage5()),
+                      MaterialPageRoute(builder: (context) => DashboardPage3()),
                     );
                   }),
                 ],
@@ -128,8 +118,13 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              Text(
-                title,
+              Center(
+                // Add a Center widget here
+                child: Text(
+                  title,
+                  textAlign:
+                      TextAlign.center, // Set the text alignment to center
+                ),
               ),
             ],
           ),
