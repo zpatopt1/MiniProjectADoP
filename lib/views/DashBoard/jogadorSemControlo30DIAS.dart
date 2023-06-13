@@ -39,7 +39,7 @@ class _DashboardPageState extends State<DashboardPage5> {
                       Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Text(
-                          'Jogadores sem controlo nos ultimos 30dias',
+                          'Jogadores sem controlo nos ultimos 30 dias',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
