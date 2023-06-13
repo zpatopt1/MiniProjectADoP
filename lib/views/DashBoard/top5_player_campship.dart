@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import '../../data/dashboardAPI.dart';
+
+
 
 class DashboardPage2 extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class DashboardPage2 extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage2> {
-  Map<String, dynamic> dashboardData = {};
+ Map<String, dynamic> dashboardData = {};
 
   @override
   void initState() {
@@ -17,19 +18,12 @@ class _DashboardPageState extends State<DashboardPage2> {
   }
 
   void fetchData() async {
-    try {
-      final response = await http.get(Uri.parse('http://localhost:3000/dashboard'));
-      if (response.statusCode == 200) {
-        setState(() {
-          dashboardData = json.decode(response.body) as Map<String, dynamic>;
-        });
-      } else {
-        print('Erro ao buscar os dados da dashboard');
-      }
-    } catch (e) {
-      print('Erro na conexão com a API: $e');
-    }
+    final data = await Dashboard.fetchDashboardData();
+    setState(() {
+      dashboardData = data;
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +31,6 @@ class _DashboardPageState extends State<DashboardPage2> {
     List<Map<String, dynamic>> topPlayersByChampionship = (dashboardData['top5JogadoresPorCompeticao'] as List<dynamic>?)?.cast<Map<String, dynamic>>().toList() ?? [];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dashboard'),
-      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(

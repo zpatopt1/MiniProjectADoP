@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../data/dashboardAPI.dart';
 
-class DashboardPage3 extends StatefulWidget {
+
+class DashboardPage4 extends StatefulWidget {
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage3> {
+class _DashboardPageState extends State<DashboardPage4> {
   Map<String, dynamic> dashboardData = {};
 
   @override
@@ -22,15 +23,8 @@ class _DashboardPageState extends State<DashboardPage3> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> topPlayersByTeam =
-        (dashboardData['top10JogadoresPorEquipe'] as List<dynamic>?)
-                ?.cast<Map<String, dynamic>>()
-                .toList() ??
-            [];
-
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: 10),
@@ -46,7 +40,7 @@ class _DashboardPageState extends State<DashboardPage3> {
                       Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Text(
-                          'Top 10 Jogadores com menos registos de controlo por equipa',
+                          'Número de jogadores que efetuaram controlo antidoping nos últimos 30 dias, por clube',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -55,13 +49,15 @@ class _DashboardPageState extends State<DashboardPage3> {
                       ),
                       ListView.builder(
                         shrinkWrap: true,
-                        itemCount: topPlayersByTeam.length,
+                        itemCount:
+                            dashboardData['jogadoresControloUltimos30DiasPorClube']?.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
-                          final item = topPlayersByTeam[index];
+                          final item =
+                              dashboardData['jogadoresControloUltimos30DiasPorClube'][index];
                           return ListTile(
-                            title: Text(item['nome_equipa'] ?? ''),
+                            title: Text(item['nome_clube']),
                             subtitle: Text(
-                                'Jogador: ${item['nome_atleta'] ?? ''}, Total de Controlos: ${item['num_testes'] ?? 0}'),
+                                'Quantidade de jogadores: ${item['num_jogadores']}'),
                           );
                         },
                       ),

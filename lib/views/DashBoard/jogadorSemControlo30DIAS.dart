@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import '../../data/dashboardAPI.dart';
 
-class DashboardPage1 extends StatefulWidget {
+class DashboardPage5 extends StatefulWidget {
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage1> {
+class _DashboardPageState extends State<DashboardPage5> {
   Map<String, dynamic> dashboardData = {};
 
   @override
@@ -17,27 +16,15 @@ class _DashboardPageState extends State<DashboardPage1> {
   }
 
   void fetchData() async {
-    try {
-      final response =
-          await http.get(Uri.parse('http://localhost:3000/dashboard'));
-      if (response.statusCode == 200) {
-        setState(() {
-          dashboardData = json.decode(response.body);
-        });
-      } else {
-        print('Erro ao buscar os dados da dashboard');
-      }
-    } catch (e) {
-      print('Erro na conexão com a API: $e');
-    }
+    final data = await Dashboard.fetchDashboardData();
+    setState(() {
+      dashboardData = data;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dashboard'),
-      ),
       body: Padding(
         padding: EdgeInsets.only(top: 10),
         child: Column(
@@ -52,7 +39,7 @@ class _DashboardPageState extends State<DashboardPage1> {
                       Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Text(
-                          'Jogadores por Clube',
+                          'Jogadores sem controlo nos ultimos 30dias',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -61,15 +48,17 @@ class _DashboardPageState extends State<DashboardPage1> {
                       ),
                       ListView.builder(
                         shrinkWrap: true,
-                        itemCount:
-                            dashboardData['jogadoresPorClube']?.length ?? 0,
+                        itemCount: dashboardData[
+                                    'jogadoresSemControloUltimos30DiasPorClube']
+                                ?.length ??
+                            0,
                         itemBuilder: (BuildContext context, int index) {
-                          final item =
-                              dashboardData['jogadoresPorClube'][index];
+                          final item = dashboardData[
+                                  'jogadoresSemControloUltimos30DiasPorClube']
+                              [index];
                           return ListTile(
-                            title: Text(item['nome']),
-                            subtitle: Text(
-                                'Quantidade de jogadores: ${item['quantidade_jogadores']}'),
+                            title: Text(
+                                'Quantidade de jogadores sem controlo: ${item['num_jogadores_sem_controlo']}'),
                           );
                         },
                       ),
@@ -84,5 +73,3 @@ class _DashboardPageState extends State<DashboardPage1> {
     );
   }
 }
-
-
