@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../DashBoard/dashboardPagesComplete.dart';
+import '../DashBoard/jogadorSemControlo30DIAS.dart';
+import '../DashBoard/quantidadeJogadoresPorClube.dart';
+import '../DashBoard/top5_player_campship.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -59,12 +62,27 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: 30,
                 children: [
                   itemDashboard(
-                      'Jogadores', CupertinoIcons.gamecontroller, Colors.black),
-                  itemDashboard('Top', CupertinoIcons.up_arrow, Colors.black),
+                      'Jogadores', CupertinoIcons.gamecontroller, Colors.black,
+                      () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DashboardPage1()),
+                    );
+                  }),
+                  itemDashboard('Top', CupertinoIcons.up_arrow, Colors.black,
+                      () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DashboardPage2()),
+                    );
+                  }),
                   itemDashboard(
-                      '30 Dias', CupertinoIcons.calendar, Colors.black),
-                  itemDashboard(
-                      '30 Dias', CupertinoIcons.calendar, Colors.black),
+                      '30 Dias', CupertinoIcons.calendar, Colors.black, () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DashboardPage5()),
+                    );
+                  }),
                 ],
               ),
             ),
@@ -74,37 +92,47 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  itemDashboard(String title, IconData iconData, Color background) => Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                offset: const Offset(0, 5),
-                color: Colors.grey,
-                spreadRadius: 2,
-                blurRadius: 5),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration:
-                  BoxDecoration(color: background, shape: BoxShape.circle),
-              child: Icon(
-                iconData,
-                color: Colors.white,
+  itemDashboard(
+    String title,
+    IconData iconData,
+    Color background,
+    VoidCallback onPressed,
+  ) =>
+      GestureDetector(
+        onTap:
+            onPressed, // Assign the onPressed callback to the GestureDetector's onTap
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(0, 5),
+                  color: Colors.grey,
+                  spreadRadius: 2,
+                  blurRadius: 5),
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration:
+                    BoxDecoration(color: background, shape: BoxShape.circle),
+                child: Icon(
+                  iconData,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
-              title,
-            )
-          ],
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                title,
+              ),
+            ],
+          ),
         ),
       );
 }
