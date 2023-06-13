@@ -25,7 +25,7 @@ class _DashboardPageState extends State<DashboardPage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-                  appBar: AppBar(
+            appBar: AppBar(
         title: Text('Dashboard'),
       ),
       body: Padding(

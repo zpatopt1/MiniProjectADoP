@@ -22,7 +22,6 @@ class _DashboardPageState extends State<DashboardPage3> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> topPlayersByTeam =
@@ -32,7 +31,7 @@ class _DashboardPageState extends State<DashboardPage3> {
             [];
 
     return Scaffold(
-                  appBar: AppBar(
+      appBar: AppBar(
         title: Text('Dashboard'),
       ),
       body: Padding(
