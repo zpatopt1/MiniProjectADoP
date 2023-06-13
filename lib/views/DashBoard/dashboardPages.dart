@@ -6,7 +6,6 @@ import 'package:mini_project/views/DashBoard/quantidadeJogadoresPorClube.dart';
 import 'package:mini_project/views/DashBoard/top10_menos_controlos_por_equIpa.dart';
 import 'package:mini_project/views/DashBoard/top5_player_campship.dart';
 import 'package:flutter/material.dart';
-import '../../data/dashboard.dart';
 
 
 class DashboardMobile extends StatefulWidget {

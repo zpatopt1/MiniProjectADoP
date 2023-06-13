@@ -31,6 +31,9 @@ class _DashboardPageState extends State<DashboardPage2> {
     List<Map<String, dynamic>> topPlayersByChampionship = (dashboardData['top5JogadoresPorCompeticao'] as List<dynamic>?)?.cast<Map<String, dynamic>>().toList() ?? [];
 
     return Scaffold(
+            appBar: AppBar(
+        title: Text('Dashboard'),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(

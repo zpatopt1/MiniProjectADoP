@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../DashBoard/dashboardPagesComplete.dart';
+import '../DashBoard/dashboardPages.dart';
 
 class HomePage extends StatelessWidget {
   @override
