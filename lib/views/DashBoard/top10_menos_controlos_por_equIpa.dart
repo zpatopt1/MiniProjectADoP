@@ -32,6 +32,9 @@ class _DashboardPageState extends State<DashboardPage3> {
             [];
 
     return Scaffold(
+                  appBar: AppBar(
+        title: Text('Dashboard'),
+      ),
       body: Padding(
         padding: EdgeInsets.only(top: 10),
         child: Column(
