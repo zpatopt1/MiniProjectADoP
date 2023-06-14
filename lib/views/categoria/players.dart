@@ -95,7 +95,7 @@ class PlayersPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => JogadorClubePage()),
+                          builder: (context) => DashboardPage1()),
                     );
                   }),
                 ],

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../data/dashboardAPI.dart';
 
-class JogadorClubePage extends StatefulWidget {
+class DashboardPage1 extends StatefulWidget {
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends State<JogadorClubePage> {
+class _DashboardPageState extends State<DashboardPage1> {
   Map<String, dynamic> dashboardData = {};
 
   @override
@@ -52,6 +52,8 @@ class _DashboardPageState extends State<JogadorClubePage> {
                       ),
                       ListView.builder(
                         shrinkWrap: true,
+                        itemCount:
+                            dashboardData['jogadoresPorClube']?.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
                           final item =
                               dashboardData['jogadoresPorClube'][index];
@@ -62,6 +64,11 @@ class _DashboardPageState extends State<JogadorClubePage> {
                           );
                         },
                       ),
+                      if (dashboardData.containsKey('jogadoresPorClube') &&
+                          dashboardData['jogadoresPorClube'].isEmpty)
+                        Text('Nenhum jogador encontrado.'),
+                      if (!dashboardData.containsKey('jogadoresPorClube'))
+                        CircularProgressIndicator(),
                     ],
                   ),
                 ),
