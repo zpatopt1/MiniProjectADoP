@@ -26,7 +26,7 @@ class _DashboardPageState extends State<DashboardPage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: Text('Nº de Jogadores por Clube'),
         backgroundColor: Colors.black,
       ),
       body: Padding(
@@ -34,46 +34,42 @@ class _DashboardPageState extends State<DashboardPage1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 16),
-                        child: Text(
-                          'Jogadores por Clube',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount:
-                            dashboardData['jogadoresPorClube']?.length ?? 0,
-                        itemBuilder: (BuildContext context, int index) {
-                          final item =
-                              dashboardData['jogadoresPorClube'][index];
-                          return ListTile(
-                            title: Text(item['nome']),
-                            subtitle: Text(
-                                'Quantidade de jogadores: ${item['quantidade_jogadores']}'),
-                          );
-                        },
-                      ),
-                      if (dashboardData.containsKey('jogadoresPorClube') &&
-                          dashboardData['jogadoresPorClube'].isEmpty)
-                        Text('Nenhum jogador encontrado.'),
-                      if (!dashboardData.containsKey('jogadoresPorClube'))
-                        CircularProgressIndicator(),
-                    ],
-                  ),
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.only(left: 16),
             ),
+            SizedBox(height: 10),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 5,
+                      color: Colors.grey.withOpacity(0.3),
+                    ),
+                  ],
+                ),
+                child: ListView.builder(
+                  itemCount: dashboardData['jogadoresPorClube']?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    final item = dashboardData['jogadoresPorClube'][index];
+                    return ListTile(
+                      title: Text(item['nome']),
+                      subtitle: Text(
+                          'Quantidade de jogadores: ${item['quantidade_jogadores']}'),
+                    );
+                  },
+                ),
+              ),
+            ),
+            if (dashboardData.containsKey('jogadoresPorClube') &&
+                dashboardData['jogadoresPorClube'].isEmpty)
+              Text('Nenhum jogador encontrado.'),
+            if (!dashboardData.containsKey('jogadoresPorClube'))
+              CircularProgressIndicator(),
           ],
         ),
       ),
