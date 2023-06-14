@@ -93,7 +93,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
           children: [
             TextField(
               controller: idController,
-              decoration: InputDecoration(labelText: 'Player ID'),
+              decoration: InputDecoration(labelText: 'Id do Jogador'),
               keyboardType: TextInputType.number,
             ),
             TextField(

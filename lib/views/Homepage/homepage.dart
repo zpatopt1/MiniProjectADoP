@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                   ),
                   itemDashboard(
                     'Testes',
-                    CupertinoIcons.up_arrow,
+                    CupertinoIcons.doc,
                     Colors.black,
                     () {
                       Navigator.push(
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                   ),
                   itemDashboard(
                     'Sortear Jogadores',
-                    CupertinoIcons.control,
+                    CupertinoIcons.loop_thick,
                     Colors.black,
                     () {
                       Navigator.push(
@@ -98,7 +98,7 @@ class HomePage extends StatelessWidget {
                   ),
                   itemDashboard(
                     'Jogadores Não Controlados',
-                    CupertinoIcons.control,
+                    CupertinoIcons.nosign,
                     Colors.black,
                     () {
                       Navigator.push(
