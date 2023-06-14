@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DashBoard/jogadorSemControlo30DIAS.dart';
 import '../DashBoard/quantidadeJogadoresPorClube.dart';
 import '../PlayerNotControlledPage.dart/playerNotControlledPage.dart';
-import '../PositivePlayersPage/positivePlayersPage.dart';
+import '../categoria/players.dart';
 import '../categoria/tops.dart';
+import '../randomControls5players/5randomplayerscontrolpage.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -23,14 +23,14 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 30),
                 ListTile(
                   title: Text(
-                    'Hi Admin!',
+                    'Olá Admin!',
                     style: Theme.of(context)
                         .textTheme
                         .headline6
                         ?.copyWith(color: Colors.white),
                   ),
                   subtitle: Text(
-                    'Welcome back!',
+                    'Bem-vindo!',
                     style: Theme.of(context)
                         .textTheme
                         .subtitle1
@@ -63,19 +63,18 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: 30,
                 children: [
                   itemDashboard(
-                    'Jogadores',
+                    'Gestão de Jogadores',
                     CupertinoIcons.profile_circled,
                     Colors.black,
                     () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => DashboardPage1()),
+                        MaterialPageRoute(builder: (context) => PlayersPage()),
                       );
                     },
                   ),
                   itemDashboard(
-                    'Top',
+                    'Testes',
                     CupertinoIcons.up_arrow,
                     Colors.black,
                     () {
@@ -86,19 +85,19 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                   itemDashboard(
-                    'Positivos',
+                    'Sortear Jogadores',
                     CupertinoIcons.control,
                     Colors.black,
                     () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PositivePlayers()),
+                            builder: (context) => RandomPlayer_1week()),
                       );
                     },
                   ),
                   itemDashboard(
-                    'Não Controlados',
+                    'Jogadores Não Controlados',
                     CupertinoIcons.control,
                     Colors.black,
                     () {

@@ -68,10 +68,19 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
                   itemCount: players.length,
                   itemBuilder: (context, index) {
                     final player = players[index];
-                    return ListTile(
-                      title: Text(player.name),
-                      subtitle: Text('CC: ${player.cc_player}'),
-                      trailing: Text('Clube: ${player.clubId}'),
+                    return Card(
+                      elevation: 4,
+                      margin: EdgeInsets.symmetric(vertical: 8),
+                      child: ListTile(
+                        title: Text(
+                          player.name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text('CC: ${player.cc_player}'),
+                        trailing: Text('Clube: ${player.clubId}'),
+                      ),
                     );
                   },
                 ),

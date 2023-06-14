@@ -31,7 +31,7 @@ class _PositivePlayersState extends State<PositivePlayers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jogadores Controlados'),
+        title: Text('Jogadores Positivos'),
         backgroundColor: Colors.black,
       ),
       body: ListView.builder(
@@ -41,11 +41,22 @@ class _PositivePlayersState extends State<PositivePlayers> {
           return Card(
             elevation: 4,
             margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: ListTile(
-              title: Text(player['nome_jogador']),
-              subtitle: Column(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'Nome do jogador: ${player['nome_jogador']}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(height: 8),
                   Text('Clube: ${player['nome_clube']}'),
                   Text('Equipa: ${player['nome_equipa']}'),
                   Text('Data da colheita: ${player['data_colheita']}'),

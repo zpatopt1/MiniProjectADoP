@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../DashBoard/quantidadeJogadoresPorClube.dart';
 import '../EditPage/addPlayers.dart';
 import '../EditPage/deletePlayer.dart';
 import '../EditPage/editPlayers.dart';
@@ -20,8 +21,16 @@ class PlayersPage extends StatelessWidget {
               children: [
                 SizedBox(height: 30),
                 ListTile(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pop(
+                          context); // Navigate back to the previous screen
+                    },
+                  ),
                   title: Text(
-                    'Hi Admin!',
+                    'Olá Admin!',
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall
@@ -59,29 +68,34 @@ class PlayersPage extends StatelessWidget {
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
-                  itemDashboard(
-                      'Adicionar', CupertinoIcons.profile_circled, Colors.black,
+                  itemDashboard('Adicionar', CupertinoIcons.add, Colors.black,
                       () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => PlayerAddPage()),
                     );
                   }),
-                  itemDashboard(
-                      'Editar', CupertinoIcons.profile_circled, Colors.black,
+                  itemDashboard('Editar', CupertinoIcons.pencil, Colors.black,
                       () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => EditPlayerPage()),
                     );
                   }),
-                  itemDashboard(
-                      'Eliminar', CupertinoIcons.profile_circled, Colors.black,
+                  itemDashboard('Eliminar', CupertinoIcons.delete, Colors.black,
                       () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => PlayerDeletePage()),
+                    );
+                  }),
+                  itemDashboard('Quantidade Jogadores por Clube',
+                      CupertinoIcons.profile_circled, Colors.black, () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => JogadorClubePage()),
                     );
                   }),
                 ],

@@ -19,6 +19,14 @@ class DoppingMonthPage extends StatelessWidget {
               children: [
                 SizedBox(height: 30),
                 ListTile(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pop(
+                          context); // Navigate back to the previous screen
+                    },
+                  ),
                   title: Text(
                     'Últimos 30 dias!',
                     style: Theme.of(context)

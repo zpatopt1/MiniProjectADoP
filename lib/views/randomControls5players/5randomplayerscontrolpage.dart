@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
-
 import '../../data/5randomplayersAPI.dart';
 
 class RandomPlayer_1week extends StatefulWidget {
   @override
-  _PositivePlayersState createState() => _PositivePlayersState();
+  _RandomPlayer_1weekState createState() => _RandomPlayer_1weekState();
 }
 
-class _PositivePlayersState extends State<RandomPlayer_1week> {
+class _RandomPlayer_1weekState extends State<RandomPlayer_1week> {
   List<dynamic> randomPlayers = [];
 
   @override
@@ -33,15 +31,20 @@ class _PositivePlayersState extends State<RandomPlayer_1week> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Random Players'),
+        title: Text('Sortear Jogadores'),
+        backgroundColor: Colors.black,
       ),
       body: ListView.builder(
         itemCount: randomPlayers.length,
         itemBuilder: (context, index) {
           final player = randomPlayers[index];
-          return ListTile(
-            title: Text(player['nome']),
-            subtitle: Text('CC Atleta: ${player['CC_atleta']}'),
+          return Card(
+            elevation: 4,
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ListTile(
+              title: Text(player['nome']),
+              subtitle: Text('CC Atleta: ${player['CC_atleta']}'),
+            ),
           );
         },
       ),

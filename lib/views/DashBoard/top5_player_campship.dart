@@ -32,7 +32,7 @@ class _DashboardPageState extends State<DashboardPage2> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top 5 Jogadores por Competição'),
+        title: Text('Jogadores Mais Testados Por Competição'),
         backgroundColor: Colors.black,
       ),
       body: Padding(
@@ -40,23 +40,25 @@ class _DashboardPageState extends State<DashboardPage2> {
         child: Column(
           children: [
             SizedBox(height: 20),
-            Text(
-              'Top 5 Jogadores por Competição',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             SizedBox(height: 10),
             ListView.builder(
               shrinkWrap: true,
               itemCount: topPlayersByChampionship.length,
               itemBuilder: (BuildContext context, int index) {
                 final item = topPlayersByChampionship[index];
-                return ListTile(
-                  title: Text(item['nome_campeonato'] ?? ''),
-                  subtitle: Text(
-                      'Jogador: ${item['nome_atleta'] ?? ''}, Total de Registros: ${item['total_registros'] ?? 0}'),
+                return Card(
+                  elevation: 2,
+                  child: ListTile(
+                    title: Text(
+                      item['nome_campeonato'] ?? '',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'Jogador: ${item['nome_atleta'] ?? ''}, Total de Registos: ${item['total_registros'] ?? 0}',
+                    ),
+                  ),
                 );
               },
             ),

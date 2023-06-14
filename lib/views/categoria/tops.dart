@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_project/views/PositivePlayersPage/positivePlayersPage.dart';
+import '../DashBoard/numerosDeJogadoresQueFizeramAntiDoping.dart';
 import '../DashBoard/top10_menos_controlos_por_equIpa.dart';
 import '../DashBoard/top5_player_campship.dart';
 
@@ -19,6 +21,14 @@ class TopsPage extends StatelessWidget {
               children: [
                 SizedBox(height: 30),
                 ListTile(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pop(
+                          context); // Navigate back to the previous screen
+                    },
+                  ),
                   title: Text(
                     'Olá Admin!',
                     style: Theme.of(context)
@@ -58,20 +68,33 @@ class TopsPage extends StatelessWidget {
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
-                  itemDashboard(
-                      'Top 5 Jogadores com mais registos Por Competição',
-                      CupertinoIcons.gamecontroller,
-                      Colors.black, () {
+                  itemDashboard('Jogadores Com Mais Registos Por Competição',
+                      CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => DashboardPage2()),
                     );
                   }),
-                  itemDashboard('Top 10 Jogadores com menos registos',
-                      CupertinoIcons.up_arrow, Colors.black, () {
+                  itemDashboard('Jogadores Com Menos Registos Por Competição',
+                      CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => DashboardPage3()),
+                    );
+                  }),
+                  itemDashboard(
+                      'Positivos', CupertinoIcons.check_mark, Colors.black, () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PositivePlayers()),
+                    );
+                  }),
+                  itemDashboard('Testados', CupertinoIcons.doc, Colors.black,
+                      () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DashboardPage4()),
                     );
                   }),
                 ],
