@@ -15,16 +15,19 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
   final TextEditingController birthdateController = TextEditingController();
 
   void updatePlayerData() {
+    // Obter os valores dos controladores para atualizar os dados do jogador
     final playerId = int.tryParse(idController.text);
     final name = nameController.text;
     final clubId = int.tryParse(clubController.text);
     final active = activeController.text == '1';
     final birthdate = birthdateController.text;
 
+    // Verificar se o ID do jogador ou o ID do clube são nulos
     if (playerId == null || clubId == null) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
+          // Exibir Erro
           title: Text('Error'),
           content:
               Text('Invalid input. Please enter valid Player ID and Club ID.'),
@@ -39,6 +42,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
       return;
     }
 
+    // atribuir valor aos campos
     final player = Player(
       cc_player: playerId,
       name: name,
@@ -52,6 +56,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
     playerData.updateData(player).then((_) {
       showDialog(
         context: context,
+        // alertar edição
         builder: (context) => AlertDialog(
           title: Text('Sucesso'),
           content: Text('Jogador Editado com Sucesso'),
@@ -63,6 +68,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
           ],
         ),
       );
+      // alertar erro
     }).catchError((error) {
       showDialog(
         context: context,
@@ -91,10 +97,12 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
+            // campos a preencher
             TextField(
               controller: idController,
               decoration: InputDecoration(labelText: 'Id do Jogador'),
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType
+                  .number, // apenas é autorizado números devido a ser ID
             ),
             TextField(
               controller: nameController,
@@ -119,7 +127,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
             ElevatedButton(
               child: Text('Editar Jogador'),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              onPressed: updatePlayerData,
+              onPressed: updatePlayerData, //submeter edição
             ),
           ],
         ),

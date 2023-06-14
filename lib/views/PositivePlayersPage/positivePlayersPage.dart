@@ -17,23 +17,26 @@ class _PositivePlayersState extends State<PositivePlayers> {
 
   void fetchData() async {
     try {
+      // Atualizar a lista de jogadores positivos com os dados obtidos
       final data = await PositivePlayersAPI.fetchPositivePlayers();
       setState(() {
         positivePlayers = data;
       });
     } catch (error) {
       print('Error fetching positive players: $error');
-      // Handle error
+      // Em caso de erro, avisar utilizador
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // exibir appbar a preto
       appBar: AppBar(
         title: Text('Jogadores Positivos'),
         backgroundColor: Colors.black,
       ),
+      // criar listview
       body: ListView.builder(
         itemCount: positivePlayers.length,
         itemBuilder: (context, index) {
@@ -56,6 +59,7 @@ class _PositivePlayersState extends State<PositivePlayers> {
                       fontSize: 16,
                     ),
                   ),
+                  // buscar data à base de dados
                   SizedBox(height: 8),
                   Text('Clube: ${player['nome_clube']}'),
                   Text('Equipa: ${player['nome_equipa']}'),

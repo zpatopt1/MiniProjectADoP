@@ -10,6 +10,7 @@ class PlayerDeletePage extends StatefulWidget {
 class _PlayerDeletePageState extends State<PlayerDeletePage> {
   final TextEditingController _playerIdController = TextEditingController();
 
+  // chamar o método para excluir o jogador com o ID.
   void deletePlayer() {
     final int playerId = int.parse(_playerIdController.text);
     PlayerDeleteData.deletePlayer(playerId);
@@ -18,6 +19,7 @@ class _PlayerDeletePageState extends State<PlayerDeletePage> {
   void showSuccessMessage(String message) {
     showDialog(
       context: context,
+      // alertar utilizador
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Sucesso'),
@@ -38,6 +40,7 @@ class _PlayerDeletePageState extends State<PlayerDeletePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // exibir appbar
       appBar: AppBar(
         title: Text('Remover Jogador'),
         backgroundColor: Colors.black,
@@ -48,12 +51,14 @@ class _PlayerDeletePageState extends State<PlayerDeletePage> {
           children: [
             TextField(
               controller: _playerIdController,
-              decoration: InputDecoration(labelText: 'ID do Jogador'),
+              decoration:
+                  InputDecoration(labelText: 'ID do Jogador'), // label do campo
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: deletePlayer,
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              onPressed: deletePlayer, // submeter eliminação
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black), // inserir cor do botão
               child: Text('Remover Jogador'),
             ),
           ],

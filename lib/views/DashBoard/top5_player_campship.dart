@@ -31,6 +31,7 @@ class _DashboardPageState extends State<DashboardPage2> {
             [];
 
     return Scaffold(
+      //exibir AppBar
       appBar: AppBar(
         title: Text('Jogadores Mais Testados Por Competição'),
         backgroundColor: Colors.black,
@@ -43,6 +44,7 @@ class _DashboardPageState extends State<DashboardPage2> {
             SizedBox(height: 10),
             ListView.builder(
               shrinkWrap: true,
+              // Definir o número de itens da lista com base na contagem de elementos na lista
               itemCount: topPlayersByChampionship.length,
               itemBuilder: (BuildContext context, int index) {
                 final item = topPlayersByChampionship[index];
@@ -55,6 +57,7 @@ class _DashboardPageState extends State<DashboardPage2> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    // mostrar nome, total de registos dos atletas
                     subtitle: Text(
                       'Jogador: ${item['nome_atleta'] ?? ''}, Total de Registos: ${item['total_registros'] ?? 0}',
                     ),

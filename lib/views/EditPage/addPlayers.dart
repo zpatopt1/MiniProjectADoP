@@ -13,6 +13,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
   final TextEditingController _activeController = TextEditingController();
   final TextEditingController _birthdateController = TextEditingController();
 
+  // chamar o método para adicionar o jogador.
   void addPlayer() {
     final Map<String, dynamic> playerData = {
       'id_clube': int.parse(_clubIdController.text),
@@ -27,6 +28,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // exibir AppBar
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('Adicionar Jogador'),
@@ -35,6 +37,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
+            // preencher campos
             TextField(
               controller: _clubIdController,
               decoration: InputDecoration(labelText: 'ID do Clube'),
@@ -52,8 +55,9 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
               decoration: InputDecoration(labelText: 'Data de Nascimento'),
             ),
             SizedBox(height: 20),
+            //
             ElevatedButton(
-              onPressed: addPlayer,
+              onPressed: addPlayer, // submeter adição de jogador
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               child: Text('Adicionar Jogador'),
             ),

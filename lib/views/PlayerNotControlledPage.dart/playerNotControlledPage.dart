@@ -23,8 +23,10 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
     days = int.parse(daysController.text);
 
     try {
+      // Tentar buscar jogadores não controlados
       players = await PlayerService.getPlayersNotControlled(days);
     } catch (error) {
+      // Escrever  erro
       print('Error: $error');
     } finally {
       setState(() {
@@ -36,6 +38,7 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Criação AppBar
       appBar: AppBar(
         title: Text('Jogadores Não Controlados'),
         backgroundColor: Colors.black,
@@ -45,6 +48,7 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Exibe texto informativo
             TextField(
               controller: daysController,
               keyboardType: TextInputType.number,
@@ -59,8 +63,10 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
             ),
             SizedBox(height: 16.0),
             if (isLoading)
+              // Mostra um indicador de progresso circular se isLoading for verdadeiro
               CircularProgressIndicator()
             else if (players.isEmpty)
+              // Mostra uma mensagem se a lista de jogadores estiver vazia
               Text('Nenhum jogador encontrado.')
             else
               Expanded(
@@ -78,6 +84,7 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        //chamar base de dados
                         subtitle: Text('CC: ${player.cc_player}'),
                         trailing: Text('Clube: ${player.clubId}'),
                       ),

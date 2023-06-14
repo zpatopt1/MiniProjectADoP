@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           Container(
+            // exibir appbar improvisada
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(50)),
@@ -55,12 +56,15 @@ class HomePage extends StatelessWidget {
                   topLeft: Radius.circular(50),
                 ),
               ),
+              // criação gridview
               child: GridView.count(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
+
+                // demonstrar 4 tópicos do menu
                 children: [
                   itemDashboard(
                     'Gestão de Jogadores',
@@ -117,6 +121,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  // criação tópico para dashboard / menu
   Widget itemDashboard(
     String title,
     IconData iconData,

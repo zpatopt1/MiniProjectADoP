@@ -16,8 +16,10 @@ class _DashboardPageState extends State<DashboardPage3> {
   }
 
   void fetchData() async {
+    // Chamar a função para buscar os dados
     final data = await Dashboard.fetchDashboardData();
     setState(() {
+      // Atualizar o estado do widget com os dados obtidos
       dashboardData = data;
     });
   }
@@ -31,6 +33,7 @@ class _DashboardPageState extends State<DashboardPage3> {
             [];
 
     return Scaffold(
+      // exibir AppBar
       appBar: AppBar(
         title: Text('Top 10'),
         backgroundColor: Colors.black,
@@ -43,6 +46,7 @@ class _DashboardPageState extends State<DashboardPage3> {
             Padding(
               padding: EdgeInsets.all(16),
               child: Text(
+                // exibir titulo
                 'Jogadores Com Menos Registos De Controlo Por Equipa',
                 style: TextStyle(
                   fontSize: 18,
@@ -55,16 +59,19 @@ class _DashboardPageState extends State<DashboardPage3> {
                 itemCount: topPlayersByTeam.length,
                 itemBuilder: (BuildContext context, int index) {
                   final item = topPlayersByTeam[index];
+
+                  // Cria um Card para exibir as informações do jogador e a contagem de testes
                   return Card(
                     elevation: 2,
                     child: ListTile(
                       title: Text(
-                        item['nome_equipa'] ?? '',
+                        item['nome_equipa'] ?? '', // Nome da equipa
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
+                        // Mostrar nome do jogador e contagem de testes
                         'Jogador: ${item['nome_atleta'] ?? ''}, Total de Controlos: ${item['num_testes'] ?? 0}',
                       ),
                     ),
