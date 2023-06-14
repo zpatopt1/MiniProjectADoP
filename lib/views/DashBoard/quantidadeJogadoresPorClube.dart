@@ -25,6 +25,7 @@ class _DashboardPageState extends State<DashboardPage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // exibir appBar
       appBar: AppBar(
         title: Text('Nº de Jogadores por Clube'),
         backgroundColor: Colors.black,
@@ -65,6 +66,7 @@ class _DashboardPageState extends State<DashboardPage1> {
                 ),
               ),
             ),
+            // avisar o utilizador caso não seja o jogador seja encontrado
             if (dashboardData.containsKey('jogadoresPorClube') &&
                 dashboardData['jogadoresPorClube'].isEmpty)
               Text('Nenhum jogador encontrado.'),
