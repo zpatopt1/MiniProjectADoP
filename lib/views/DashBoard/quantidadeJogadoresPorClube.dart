@@ -51,8 +51,6 @@ class _DashboardPageState extends State<DashboardPage1> {
                       ),
                       ListView.builder(
                         shrinkWrap: true,
-                        itemCount:
-                            dashboardData['jogadoresPorClube']?.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
                           final item =
                               dashboardData['jogadoresPorClube'][index];
