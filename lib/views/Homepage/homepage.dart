@@ -37,8 +37,7 @@ class HomePage extends StatelessWidget {
                   ),
                   trailing: CircleAvatar(
                       radius: 30,
-                      backgroundImage:
-                          const AssetImage('assets/images/logo.jpg')),
+                      backgroundImage: const AssetImage('images/logo.jpg')),
                 ),
                 SizedBox(height: 30),
               ],
