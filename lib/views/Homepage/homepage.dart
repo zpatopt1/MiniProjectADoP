@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../DashBoard/jogadorSemControlo30DIAS.dart';
 import '../DashBoard/quantidadeJogadoresPorClube.dart';
-import '../DashBoard/top5_player_campship.dart';
+import '../PlayerNotControlledPage.dart/playerNotControlledPage.dart';
+import '../PositivePlayersPage/positivePlayersPage.dart';
 import '../categoria/tops.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,19 +26,20 @@ class HomePage extends StatelessWidget {
                     'Hi Admin!',
                     style: Theme.of(context)
                         .textTheme
-                        .headlineSmall
+                        .headline6
                         ?.copyWith(color: Colors.white),
                   ),
                   subtitle: Text(
                     'Welcome back!',
                     style: Theme.of(context)
                         .textTheme
-                        .titleMedium
+                        .subtitle1
                         ?.copyWith(color: Colors.white54),
                   ),
                   trailing: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: const AssetImage('images/logo.jpg')),
+                    radius: 30,
+                    backgroundImage: AssetImage('images/logo.jpg'),
+                  ),
                 ),
                 SizedBox(height: 30),
               ],
@@ -47,7 +49,7 @@ class HomePage extends StatelessWidget {
             color: Colors.black,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50),
@@ -55,33 +57,58 @@ class HomePage extends StatelessWidget {
               ),
               child: GridView.count(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
                   itemDashboard(
-                      'Jogadores', CupertinoIcons.gamecontroller, Colors.black,
-                      () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DashboardPage1()),
-                    );
-                  }),
-                  itemDashboard('Top', CupertinoIcons.up_arrow, Colors.black,
-                      () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TopsPage()),
-                    );
-                  }),
+                    'Jogadores',
+                    CupertinoIcons.profile_circled,
+                    Colors.black,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DashboardPage1()),
+                      );
+                    },
+                  ),
                   itemDashboard(
-                      '30 Dias', CupertinoIcons.calendar, Colors.black, () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DashboardPage5()),
-                    );
-                  }),
+                    'Top',
+                    CupertinoIcons.up_arrow,
+                    Colors.black,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TopsPage()),
+                      );
+                    },
+                  ),
+                  itemDashboard(
+                    'Positivos',
+                    CupertinoIcons.control,
+                    Colors.black,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PositivePlayers()),
+                      );
+                    },
+                  ),
+                  itemDashboard(
+                    'Não Controlados',
+                    CupertinoIcons.control,
+                    Colors.black,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PlayerNotControlledPage()),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -91,47 +118,46 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  itemDashboard(
+  Widget itemDashboard(
     String title,
     IconData iconData,
     Color background,
     VoidCallback onPressed,
-  ) =>
-      GestureDetector(
-        onTap:
-            onPressed, // Assign the onPressed callback to the GestureDetector's onTap
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  offset: const Offset(0, 5),
-                  color: Colors.grey,
-                  spreadRadius: 2,
-                  blurRadius: 5),
-            ],
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration:
-                    BoxDecoration(color: background, shape: BoxShape.circle),
-                child: Icon(
-                  iconData,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                title,
-              ),
-            ],
-          ),
+  ) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 5),
+              color: Colors.grey,
+              spreadRadius: 2,
+              blurRadius: 5,
+            ),
+          ],
         ),
-      );
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: background,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                iconData,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(title),
+          ],
+        ),
+      ),
+    );
+  }
 }

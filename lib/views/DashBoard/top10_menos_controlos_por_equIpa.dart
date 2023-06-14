@@ -32,7 +32,8 @@ class _DashboardPageState extends State<DashboardPage3> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: Text('Top 10 Menos Jogadores Controlados Por Equipa'),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 10),

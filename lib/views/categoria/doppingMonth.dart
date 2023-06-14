@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DashBoard/top10_menos_controlos_por_equIpa.dart';
-import '../DashBoard/top5_player_campship.dart';
+import '../DashBoard/jogadorSemControlo30DIAS.dart';
+import '../DashBoard/numerosDeJogadoresQueFizeramAntiDoping.dart';
 
-class TopsPage extends StatelessWidget {
+class DoppingMonthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +20,14 @@ class TopsPage extends StatelessWidget {
                 SizedBox(height: 30),
                 ListTile(
                   title: Text(
-                    'Olá Admin!',
+                    'Últimos 30 dias!',
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall
                         ?.copyWith(color: Colors.white),
                   ),
                   subtitle: Text(
-                    'Bem-vindo!',
+                    'Testes Anti-Dopping',
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -58,20 +58,18 @@ class TopsPage extends StatelessWidget {
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
-                  itemDashboard(
-                      'Top 5 Jogadores com mais registos Por Competição',
-                      CupertinoIcons.gamecontroller,
-                      Colors.black, () {
+                  itemDashboard('Jogadores Sem Controlo',
+                      CupertinoIcons.calendar, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage2()),
+                      MaterialPageRoute(builder: (context) => DashboardPage5()),
                     );
                   }),
-                  itemDashboard('Top 10 Jogadores com menos registos',
-                      CupertinoIcons.up_arrow, Colors.black, () {
+                  itemDashboard('Jogadores Controlados',
+                      CupertinoIcons.calendar, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage3()),
+                      MaterialPageRoute(builder: (context) => DashboardPage4()),
                     );
                   }),
                 ],

@@ -31,24 +31,29 @@ class _PositivePlayersState extends State<PositivePlayers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Positive Players'),
+        title: Text('Jogadores Controlados'),
+        backgroundColor: Colors.black,
       ),
       body: ListView.builder(
         itemCount: positivePlayers.length,
         itemBuilder: (context, index) {
           final player = positivePlayers[index];
-          return ListTile(
-            title: Text(player['nome_jogador']),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Clube: ${player['nome_clube']}'),
-                Text('Equipa: ${player['nome_equipa']}'),
-                Text('Data da colheita: ${player['data_colheita']}'),
-                Text('Data do teste: ${player['data_teste']}'),
-                Text('Laboratório de testagem: ${player['laboratorio']}'),
-                Text('Substância: ${player['substancia_positiva']}'),
-              ],
+          return Card(
+            elevation: 4,
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ListTile(
+              title: Text(player['nome_jogador']),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Clube: ${player['nome_clube']}'),
+                  Text('Equipa: ${player['nome_equipa']}'),
+                  Text('Data da colheita: ${player['data_colheita']}'),
+                  Text('Data do teste: ${player['data_teste']}'),
+                  Text('Laboratório de testagem: ${player['laboratorio']}'),
+                  Text('Substância: ${player['substancia_positiva']}'),
+                ],
+              ),
             ),
           );
         },

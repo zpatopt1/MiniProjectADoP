@@ -28,6 +28,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text('Adicionar Jogador'),
       ),
       body: Padding(
@@ -53,6 +54,7 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: addPlayer,
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               child: Text('Adicionar Jogador'),
             ),
           ],

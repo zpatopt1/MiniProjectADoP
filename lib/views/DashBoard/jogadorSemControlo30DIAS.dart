@@ -25,8 +25,9 @@ class _DashboardPageState extends State<DashboardPage5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(
-        title: Text('Dashboard'),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text('Jogadores Não Controlados'),
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 10),
@@ -42,7 +43,7 @@ class _DashboardPageState extends State<DashboardPage5> {
                       Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Text(
-                          'Jogadores sem controlo nos ultimos 30dias',
+                          'Nº de Jogadores sem controlo nos últimos 30 dias',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

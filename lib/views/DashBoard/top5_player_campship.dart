@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../data/dashboardAPI.dart';
 
-
-
 class DashboardPage2 extends StatefulWidget {
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
 
 class _DashboardPageState extends State<DashboardPage2> {
- Map<String, dynamic> dashboardData = {};
+  Map<String, dynamic> dashboardData = {};
 
   @override
   void initState() {
@@ -24,15 +22,18 @@ class _DashboardPageState extends State<DashboardPage2> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-
-    List<Map<String, dynamic>> topPlayersByChampionship = (dashboardData['top5JogadoresPorCompeticao'] as List<dynamic>?)?.cast<Map<String, dynamic>>().toList() ?? [];
+    List<Map<String, dynamic>> topPlayersByChampionship =
+        (dashboardData['top5JogadoresPorCompeticao'] as List<dynamic>?)
+                ?.cast<Map<String, dynamic>>()
+                .toList() ??
+            [];
 
     return Scaffold(
-            appBar: AppBar(
-        title: Text('Dashboard'),
+      appBar: AppBar(
+        title: Text('Top 5 Jogadores por Competição'),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -54,7 +55,8 @@ class _DashboardPageState extends State<DashboardPage2> {
                 final item = topPlayersByChampionship[index];
                 return ListTile(
                   title: Text(item['nome_campeonato'] ?? ''),
-                  subtitle: Text('Jogador: ${item['nome_atleta'] ?? ''}, Total de Registros: ${item['total_registros'] ?? 0}'),
+                  subtitle: Text(
+                      'Jogador: ${item['nome_atleta'] ?? ''}, Total de Registros: ${item['total_registros'] ?? 0}'),
                 );
               },
             ),

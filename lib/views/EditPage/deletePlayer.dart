@@ -40,6 +40,7 @@ class _PlayerDeletePageState extends State<PlayerDeletePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Remover Jogador'),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -52,6 +53,7 @@ class _PlayerDeletePageState extends State<PlayerDeletePage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: deletePlayer,
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               child: Text('Remover Jogador'),
             ),
           ],

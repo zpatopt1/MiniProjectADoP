@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../../Models/player.dart';
 import '../../data/playerNotControlledAPI.dart';
 
-
 class PlayerNotControlledPage extends StatefulWidget {
   @override
-  _PlayerNotControlledPageState createState() => _PlayerNotControlledPageState();
+  _PlayerNotControlledPageState createState() =>
+      _PlayerNotControlledPageState();
 }
 
 class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
@@ -38,6 +38,7 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Jogadores Não Controlados'),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

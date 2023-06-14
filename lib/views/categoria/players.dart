@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DashBoard/top10_menos_controlos_por_equIpa.dart';
-import '../DashBoard/top5_player_campship.dart';
+import '../EditPage/addPlayers.dart';
+import '../EditPage/deletePlayer.dart';
+import '../EditPage/editPlayers.dart';
 
-class TopsPage extends StatelessWidget {
+class PlayersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +21,14 @@ class TopsPage extends StatelessWidget {
                 SizedBox(height: 30),
                 ListTile(
                   title: Text(
-                    'Olá Admin!',
+                    'Hi Admin!',
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall
                         ?.copyWith(color: Colors.white),
                   ),
                   subtitle: Text(
-                    'Bem-vindo!',
+                    'Welcome back!',
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -59,19 +60,28 @@ class TopsPage extends StatelessWidget {
                 mainAxisSpacing: 30,
                 children: [
                   itemDashboard(
-                      'Top 5 Jogadores com mais registos Por Competição',
-                      CupertinoIcons.gamecontroller,
-                      Colors.black, () {
+                      'Adicionar', CupertinoIcons.profile_circled, Colors.black,
+                      () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage2()),
+                      MaterialPageRoute(builder: (context) => PlayerAddPage()),
                     );
                   }),
-                  itemDashboard('Top 10 Jogadores com menos registos',
-                      CupertinoIcons.up_arrow, Colors.black, () {
+                  itemDashboard(
+                      'Editar', CupertinoIcons.profile_circled, Colors.black,
+                      () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage3()),
+                      MaterialPageRoute(builder: (context) => EditPlayerPage()),
+                    );
+                  }),
+                  itemDashboard(
+                      'Eliminar', CupertinoIcons.profile_circled, Colors.black,
+                      () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PlayerDeletePage()),
                     );
                   }),
                 ],

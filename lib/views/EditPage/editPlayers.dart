@@ -26,7 +26,8 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Error'),
-          content: Text('Invalid input. Please enter valid Player ID and Club ID.'),
+          content:
+              Text('Invalid input. Please enter valid Player ID and Club ID.'),
           actions: [
             TextButton(
               child: Text('OK'),
@@ -52,8 +53,8 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Success'),
-          content: Text('Player updated successfully'),
+          title: Text('Sucesso'),
+          content: Text('Jogador Editado com Sucesso'),
           actions: [
             TextButton(
               child: Text('OK'),
@@ -67,7 +68,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Error'),
-          content: Text('Failed to update player data'),
+          content: Text('Erro ao editar jogador'),
           actions: [
             TextButton(
               child: Text('OK'),
@@ -83,7 +84,8 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Player'),
+        backgroundColor: Colors.black,
+        title: Text('Editar Jogador'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -96,7 +98,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
             ),
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: InputDecoration(labelText: 'Nome'),
             ),
             TextField(
               controller: clubController,
@@ -105,16 +107,18 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
             ),
             TextField(
               controller: activeController,
-              decoration: InputDecoration(labelText: 'Active (0 or 1)'),
+              decoration: InputDecoration(labelText: 'Ativo (0 or 1)'),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: birthdateController,
-              decoration: InputDecoration(labelText: 'Birthdate (YYYY-MM-DD)'),
+              decoration:
+                  InputDecoration(labelText: 'Data de Nascimento (YYYY-MM-DD)'),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
-              child: Text('Update'),
+              child: Text('Editar Jogador'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               onPressed: updatePlayerData,
             ),
           ],
