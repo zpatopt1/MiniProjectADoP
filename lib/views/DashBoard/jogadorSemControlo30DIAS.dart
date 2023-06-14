@@ -26,6 +26,7 @@ class _DashboardPageState extends State<DashboardPage5> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // exibir AppBar
         backgroundColor: Colors.black,
         title: Text('Jogadores Não Controlados'),
       ),
@@ -43,6 +44,7 @@ class _DashboardPageState extends State<DashboardPage5> {
                       Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Text(
+                          // mostrar titulo
                           'Nº de Jogadores sem controlo nos últimos 30 dias',
                           style: TextStyle(
                             fontSize: 18,
@@ -50,8 +52,10 @@ class _DashboardPageState extends State<DashboardPage5> {
                           ),
                         ),
                       ),
+                      // chamar listview
                       ListView.builder(
                         shrinkWrap: true,
+                        // buscar dados
                         itemCount: dashboardData[
                                     'jogadoresSemControloUltimos30DiasPorClube']
                                 ?.length ??

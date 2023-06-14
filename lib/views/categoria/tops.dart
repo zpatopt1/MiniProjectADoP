@@ -9,7 +9,8 @@ class TopsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: // chamar listview
+          ListView(
         padding: EdgeInsets.zero,
         children: [
           Container(
@@ -25,8 +26,7 @@ class TopsPage extends StatelessWidget {
                     icon: Icon(Icons.arrow_back),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.pop(
-                          context); // Navigate back to the previous screen
+                      Navigator.pop(context); // ir para a página anterior
                     },
                   ),
                   title: Text(
@@ -68,6 +68,9 @@ class TopsPage extends StatelessWidget {
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
+                  // tópicos menu
+
+                  // jogadores com mais registos por competição
                   itemDashboard('Jogadores Com Mais Registos Por Competição',
                       CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
@@ -75,6 +78,7 @@ class TopsPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => DashboardPage2()),
                     );
                   }),
+                  // jogadores com menos registos por competição
                   itemDashboard('Jogadores Com Menos Registos Por Competição',
                       CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
@@ -82,6 +86,7 @@ class TopsPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => DashboardPage3()),
                     );
                   }),
+                  // jogadores com teste positivo
                   itemDashboard(
                       'Positivos', CupertinoIcons.check_mark, Colors.black, () {
                     Navigator.push(
@@ -90,6 +95,7 @@ class TopsPage extends StatelessWidget {
                           builder: (context) => PositivePlayers()),
                     );
                   }),
+                  // jogadores testados
                   itemDashboard('Testados', CupertinoIcons.doc, Colors.black,
                       () {
                     Navigator.push(
@@ -106,6 +112,7 @@ class TopsPage extends StatelessWidget {
     );
   }
 
+  // criação tópicos para dashboar
   itemDashboard(
     String title,
     IconData iconData,
@@ -143,11 +150,10 @@ class TopsPage extends StatelessWidget {
                 height: 8,
               ),
               Center(
-                // Add a Center widget here
+                // Centrar Widget
                 child: Text(
                   title,
-                  textAlign:
-                      TextAlign.center, // Set the text alignment to center
+                  textAlign: TextAlign.center, // alinhar texto ao centro
                 ),
               ),
             ],

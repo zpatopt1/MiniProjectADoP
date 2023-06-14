@@ -25,6 +25,7 @@ class _DashboardPage4State extends State<DashboardPage4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // exibir appBar
       appBar: AppBar(
         title: Text('Jogadores Testados'),
         backgroundColor: Colors.black,
@@ -41,6 +42,7 @@ class _DashboardPage4State extends State<DashboardPage4> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
+                      // mostrar titulo
                       'Número de jogadores que efetuaram controlo antidoping nos últimos 30 dias, por clube',
                       style: TextStyle(
                         fontSize: 18,
@@ -50,6 +52,7 @@ class _DashboardPage4State extends State<DashboardPage4> {
                     SizedBox(height: 10),
                     Expanded(
                       child: ListView.builder(
+                        // Definir o número de itens da lista com base na contagem
                         itemCount: dashboardData[
                                     'jogadoresControloUltimos30DiasPorClube']
                                 ?.length ??
@@ -59,6 +62,7 @@ class _DashboardPage4State extends State<DashboardPage4> {
                               'jogadoresControloUltimos30DiasPorClube'][index];
                           return Card(
                             child: ListTile(
+                              //mostrar dados
                               title: Text(item['nome_clube']),
                               subtitle: Text(
                                   'Quantidade de jogadores: ${item['num_jogadores']}'),

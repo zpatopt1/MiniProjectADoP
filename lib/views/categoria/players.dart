@@ -9,7 +9,9 @@ class PlayersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body:
+          //chamar listview
+          ListView(
         padding: EdgeInsets.zero,
         children: [
           Container(
@@ -21,12 +23,12 @@ class PlayersPage extends StatelessWidget {
               children: [
                 SizedBox(height: 30),
                 ListTile(
+                  //icon retroceder
                   leading: IconButton(
                     icon: Icon(Icons.arrow_back),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.pop(
-                          context); // Navigate back to the previous screen
+                      Navigator.pop(context); // ir para a página anterior
                     },
                   ),
                   title: Text(
@@ -68,6 +70,9 @@ class PlayersPage extends StatelessWidget {
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 30,
                 children: [
+                  // adicionar tópicos menu
+
+                  // adicionar jogador
                   itemDashboard('Adicionar', CupertinoIcons.add, Colors.black,
                       () {
                     Navigator.push(
@@ -75,6 +80,8 @@ class PlayersPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => PlayerAddPage()),
                     );
                   }),
+
+                  // editar jogador
                   itemDashboard('Editar', CupertinoIcons.pencil, Colors.black,
                       () {
                     Navigator.push(
@@ -82,6 +89,8 @@ class PlayersPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => EditPlayerPage()),
                     );
                   }),
+
+                  // eliminar jogador
                   itemDashboard('Eliminar', CupertinoIcons.delete, Colors.black,
                       () {
                     Navigator.push(
@@ -90,12 +99,13 @@ class PlayersPage extends StatelessWidget {
                           builder: (context) => PlayerDeletePage()),
                     );
                   }),
+
+                  // quantidade de jogadores por clube
                   itemDashboard('Quantidade Jogadores por Clube',
                       CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => DashboardPage1()),
+                      MaterialPageRoute(builder: (context) => DashboardPage1()),
                     );
                   }),
                 ],
@@ -107,6 +117,7 @@ class PlayersPage extends StatelessWidget {
     );
   }
 
+  // criar tópicos para a dashboard
   itemDashboard(
     String title,
     IconData iconData,
@@ -144,11 +155,10 @@ class PlayersPage extends StatelessWidget {
                 height: 8,
               ),
               Center(
-                // Add a Center widget here
+                // Widget ao centro
                 child: Text(
                   title,
-                  textAlign:
-                      TextAlign.center, // Set the text alignment to center
+                  textAlign: TextAlign.center, // alinhar texto ao centro
                 ),
               ),
             ],
