@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../DashBoard/NumberOfPlayersByClub.dart';
-import '../PlayerNotControlledPage.dart/erroplayerNotControlledPage.dart';
+import '../PlayerNotControlledPage.dart/playerNotControlledPage.dart';
 import '../categoria/players.dart';
 import '../categoria/tops.dart';
 import '../randomControls5players/RandomPlayersForNextWeek.dart';

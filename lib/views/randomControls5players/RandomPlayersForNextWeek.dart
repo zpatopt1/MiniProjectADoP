@@ -3,10 +3,10 @@ import '../../data/5randomPlayerAPI.dart';
 
 class RandomPlayerNextWeek extends StatefulWidget {
   @override
-  _RandomPlayer_1weekState createState() => _RandomPlayer_1weekState();
+  _RandomPlayerNextWeekState createState() => _RandomPlayerNextWeekState();
 }
 
-class _RandomPlayer_1weekState extends State<RandomPlayerNextWeek> {
+class _RandomPlayerNextWeekState extends State<RandomPlayerNextWeek> {
   List<dynamic> randomPlayers = [];
 
   @override
@@ -17,7 +17,7 @@ class _RandomPlayer_1weekState extends State<RandomPlayerNextWeek> {
 
   void fetchRandomPlayers() async {
     try {
-      final data = await RandomPlayer5API.fetchRandomPlayersControlNextWeek();
+      final data = await RandomPlayerControlNextWeekAPI.fetchRandomPlayersControlNextWeek();
       setState(() {
         randomPlayers = data;
       });

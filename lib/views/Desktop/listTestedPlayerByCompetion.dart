@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
-class TestedPlayersPage extends StatefulWidget {
+import '../../data/Desktop/listTestedPlayersByCompetionAPI.dart';
+
+class TestedPlayersByCompetitionPage extends StatefulWidget {
   @override
-  _TestedPlayersPageState createState() => _TestedPlayersPageState();
+  TestedPlayersByCompetitionState createState() =>
+      TestedPlayersByCompetitionState();
 }
 
-class _TestedPlayersPageState extends State<TestedPlayersPage> {
+class TestedPlayersByCompetitionState
+    extends State<TestedPlayersByCompetitionPage> {
   TextEditingController _competitionController = TextEditingController();
   List<dynamic> _playersList = [];
-
-  Future<void> fetchTestedPlayers(String competition) async {
-    final response = await http.get(Uri.parse('http://localhost:3000/tested-players/$competition'));
-
-    if (response.statusCode == 200) {
-      setState(() {
-        _playersList = json.decode(response.body);
-      });
-    } else {
-      throw Exception('Failed to fetch tested players');
-    }
-  }
+  TestedPlayersByCompetitionAPI _playersData = TestedPlayersByCompetitionAPI();
 
   @override
   void dispose() {
@@ -29,11 +20,20 @@ class _TestedPlayersPageState extends State<TestedPlayersPage> {
     super.dispose();
   }
 
+  Future<void> fetchTestedPlayers(String competition) async {
+    List<dynamic> playersList =
+        await _playersData.fetchTestedPlayersByCompetititon(competition);
+    setState(() {
+      _playersList = playersList;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tested Players'),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -42,7 +42,7 @@ class _TestedPlayersPageState extends State<TestedPlayersPage> {
             TextField(
               controller: _competitionController,
               decoration: InputDecoration(
-                labelText: 'Competition',
+                labelText: 'Campionship',
               ),
             ),
             SizedBox(height: 16.0),
@@ -51,6 +51,10 @@ class _TestedPlayersPageState extends State<TestedPlayersPage> {
                 String competition = _competitionController.text;
                 fetchTestedPlayers(competition);
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.black, // Set button background color to black
+              ),
               child: Text('Search'),
             ),
             SizedBox(height: 16.0),
@@ -64,7 +68,8 @@ class _TestedPlayersPageState extends State<TestedPlayersPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Clinic: ${_playersList[index]['nome_clinica']}'),
-                        Text('Professional: ${_playersList[index]['nome_profissional']}'),
+                        Text(
+                            'Professional: ${_playersList[index]['nome_profissional']}'),
                       ],
                     ),
                   );

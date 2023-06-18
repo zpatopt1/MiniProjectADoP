@@ -17,7 +17,7 @@ class _DashboardPageState extends State<top10LessControlledByTeam> {
 
   void fetchData() async {
     // Chamar a função para buscar os dados
-    final data = await Dashboard.fetchDashboardData();
+    final data = await Dashboard.fetchDashboard();
     setState(() {
       // Atualizar o estado do widget com os dados obtidos
       dashboardData = data;

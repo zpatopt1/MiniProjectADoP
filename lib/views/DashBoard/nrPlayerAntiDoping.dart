@@ -16,7 +16,7 @@ class _DashboardPage4State extends State<NumberOfPlayersWithControlOnLast30Days>
   }
 
   void fetchData() async {
-    final data = await Dashboard.fetchDashboardData();
+    final data = await Dashboard.fetchDashboard();
     setState(() {
       dashboardData = data;
     });

@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
-class PositivePlayersPage extends StatefulWidget {
+import '../../data/Desktop/listPlayerSubstanciaAPI.dart.dart';
+
+class PositivePlayersBySubstancePage extends StatefulWidget {
   @override
-  _PositivePlayersPageState createState() => _PositivePlayersPageState();
+  _PositivePlayersBySubstancePageState createState() =>
+      _PositivePlayersBySubstancePageState();
 }
 
-class _PositivePlayersPageState extends State<PositivePlayersPage> {
+class _PositivePlayersBySubstancePageState
+    extends State<PositivePlayersBySubstancePage> {
   List<dynamic> _positivePlayersList = [];
-
-  Future<void> fetchPositivePlayers() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/positive-players'));
-
-    if (response.statusCode == 200) {
-      setState(() {
-        _positivePlayersList = json.decode(response.body);
-      });
-    } else {
-      throw Exception('Failed to fetch positive players');
-    }
-  }
 
   @override
   void initState() {
@@ -28,33 +18,69 @@ class _PositivePlayersPageState extends State<PositivePlayersPage> {
     super.initState();
   }
 
+  Future<void> fetchPositivePlayers() async {
+    try {
+      PositivePlayersAPI api = PositivePlayersAPI();
+      List<dynamic> players = await api.fetchPositivePlayers();
+
+      setState(() {
+        _positivePlayersList = players;
+      });
+    } catch (e) {
+      throw Exception('Failed to fetch positive players');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Positive Players'),
+        backgroundColor: Colors.black,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: _positivePlayersList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(_positivePlayersList[index]['nome_jogador']),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Club: ${_positivePlayersList[index]['nome_clube']}'),
-                  Text('Team: ${_positivePlayersList[index]['nome_equipa']}'),
-                  Text('Sampling Date: ${_positivePlayersList[index]['data_colheita']}'),
-                  Text('Test Date: ${_positivePlayersList[index]['data_teste']}'),
-                  Text('Laboratory: ${_positivePlayersList[index]['laboratorio']}'),
-                  Text('Positive Substance: ${_positivePlayersList[index]['substancia_positiva']}'),
-                ],
-              ),
-            );
-          },
-        ),
+      body: PositivePlayersListView(playersList: _positivePlayersList),
+    );
+  }
+}
+
+class PositivePlayersListView extends StatelessWidget {
+  final List<dynamic> playersList;
+
+  PositivePlayersListView({required this.playersList});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: ListView.builder(
+        itemCount: playersList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return PositivePlayerTile(playerData: playersList[index]);
+        },
+      ),
+    );
+  }
+}
+
+class PositivePlayerTile extends StatelessWidget {
+  final dynamic playerData;
+
+  PositivePlayerTile({required this.playerData});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(playerData['nome_jogador']),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Club: ${playerData['nome_clube']}'),
+          Text('Team: ${playerData['nome_equipa']}'),
+          Text('Sampling Date: ${playerData['data_colheita']}'),
+          Text('Test Date: ${playerData['data_teste']}'),
+          Text('Laboratory: ${playerData['laboratorio']}'),
+          Text('Positive Substance: ${playerData['substancia_positiva']}'),
+        ],
       ),
     );
   }

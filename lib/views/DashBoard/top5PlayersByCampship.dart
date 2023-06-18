@@ -16,7 +16,7 @@ class _DashboardPageState extends State<top5PlayersByChampionship> {
   }
 
   void fetchData() async {
-    final data = await Dashboard.fetchDashboardData();
+    final data = await Dashboard.fetchDashboard();
     setState(() {
       dashboardData = data;
     });

@@ -2,14 +2,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ClubAddData {
-  static Future<void> addPlayer(Map<String, dynamic> ClubData) async {
+  static Future<void> addClube(Map<String, dynamic> clubData) async {
     final String apiUrl = 'http://localhost:3000/clube';
 
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(ClubData),
+        body: jsonEncode(clubData),
       );
 
       if (response.statusCode == 200) {

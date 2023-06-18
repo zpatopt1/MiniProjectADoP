@@ -55,7 +55,6 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
               decoration: InputDecoration(labelText: 'Data de Nascimento'),
             ),
             SizedBox(height: 20),
-            //
             ElevatedButton(
               onPressed: addPlayer, // submeter adição de jogador
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),

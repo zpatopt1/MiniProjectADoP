@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Dashboard {
-  static Future<Map<String, dynamic>> fetchDashboardData() async {
+  static Future<Map<String, dynamic>> fetchDashboard() async {
     try {
       final response = await http.get(Uri.parse('http://localhost:3000/dashboard'));
       if (response.statusCode == 200) {

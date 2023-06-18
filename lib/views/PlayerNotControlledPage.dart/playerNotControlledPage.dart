@@ -24,7 +24,7 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
 
     try {
       // Tentar buscar jogadores não controlados
-      players = await PlayersNotControlledAPI.getPlayersNotControlled(days);
+      players = await PlayersNotControlledAPI.fetchPlayersNotControlled(days);
     } catch (error) {
       // Escrever  erro
       print('Error: $error');

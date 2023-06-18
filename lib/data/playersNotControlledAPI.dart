@@ -4,8 +4,8 @@ import 'dart:convert';
 import '../Models/player.dart';
 
 class PlayersNotControlledAPI {
-  static Future<List<Player>> getPlayersNotControlled(int days) async {
-    final url = 'http://localhost:3000/players-tested/$days';
+  static Future<List<Player>> fetchPlayersNotControlled(int days) async {
+    final url = 'http://localhost:3000//players-tested-days/:days';
 
     final response = await http.get(Uri.parse(url));
 
