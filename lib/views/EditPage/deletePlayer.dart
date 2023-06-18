@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/deletePlayerAPI.dart';
+import '../../data/EditPlayers/deletePlayerAPI.dart';
 
 class PlayerDeletePage extends StatefulWidget {
   @override

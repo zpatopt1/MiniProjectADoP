@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../data/dashboardAPI.dart';
+import '../../data/Dashboard/dashboardAPI.dart';
 
-class DashboardPage4 extends StatefulWidget {
+class NumberOfPlayersWithControlOnLast30Days extends StatefulWidget {
   @override
   _DashboardPage4State createState() => _DashboardPage4State();
 }
 
-class _DashboardPage4State extends State<DashboardPage4> {
+class _DashboardPage4State extends State<NumberOfPlayersWithControlOnLast30Days> {
   Map<String, dynamic> dashboardData = {};
 
   @override

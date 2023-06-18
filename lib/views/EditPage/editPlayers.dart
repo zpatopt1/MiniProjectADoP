@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Models/player.dart';
-import '../../data/editPlayerAPI.dart';
+import '../../data/EditPlayers/editPlayerAPI.dart';
 
 class EditPlayerPage extends StatefulWidget {
   @override
@@ -51,7 +51,7 @@ class _EditPlayerPageState extends State<EditPlayerPage> {
       clubId: clubId,
     );
 
-    final playerData = PlayerData();
+    final playerData = PlayerEditData();
 
     playerData.updateData(player).then((_) {
       showDialog(

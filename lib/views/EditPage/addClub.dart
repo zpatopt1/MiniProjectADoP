@@ -2,27 +2,25 @@ import 'package:flutter/material.dart';
 
 import '../../data/EditPlayers/addPlayerAPI.dart';
 
-class PlayerAddPage extends StatefulWidget {
+class ClubAddPage extends StatefulWidget {
   @override
   _PlayerAddPageState createState() => _PlayerAddPageState();
 }
 
-class _PlayerAddPageState extends State<PlayerAddPage> {
-  final TextEditingController _clubIdController = TextEditingController();
+class _PlayerAddPageState extends State<ClubAddPage> {
+  final TextEditingController _equipaIdController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _activeController = TextEditingController();
-  final TextEditingController _birthdateController = TextEditingController();
+ 
 
   // chamar o método para adicionar o jogador.
   void addPlayer() {
-    final Map<String, dynamic> playerData = {
-      'id_clube': int.parse(_clubIdController.text),
+    final Map<String, dynamic> ClubData = {
+      'id_equipa': int.parse(_equipaIdController.text),
       'nome': _nameController.text,
-      'ativo': _activeController.text,
-      'dt_nasc': _birthdateController.text,
+
     };
 
-    PlayerAddData.addPlayer(playerData);
+    PlayerAddData.addPlayer(ClubData);
   }
 
   @override
@@ -39,20 +37,12 @@ class _PlayerAddPageState extends State<PlayerAddPage> {
           children: [
             // preencher campos
             TextField(
-              controller: _clubIdController,
-              decoration: InputDecoration(labelText: 'ID do Clube'),
+              controller: _equipaIdController,
+              decoration: InputDecoration(labelText: 'ID da equipa'),
             ),
             TextField(
               controller: _nameController,
-              decoration: InputDecoration(labelText: 'Nome do Jogador'),
-            ),
-            TextField(
-              controller: _activeController,
-              decoration: InputDecoration(labelText: 'Ativo'),
-            ),
-            TextField(
-              controller: _birthdateController,
-              decoration: InputDecoration(labelText: 'Data de Nascimento'),
+              decoration: InputDecoration(labelText: 'Nome da equipa'),
             ),
             SizedBox(height: 20),
             //

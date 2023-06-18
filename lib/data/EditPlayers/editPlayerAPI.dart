@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:mini_project/Models/player.dart';
 
-class PlayerData {
+class PlayerEditData {
   final String apiUrl = 'http://localhost:3000/players';
 
   Future<void> updateData(Player player) async {

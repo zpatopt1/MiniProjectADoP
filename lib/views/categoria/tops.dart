@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/views/PositivePlayersPage/positivePlayersPage.dart';
-import '../DashBoard/numerosDeJogadoresQueFizeramAntiDoping.dart';
-import '../DashBoard/top10_menos_controlos_por_equIpa.dart';
-import '../DashBoard/top5_player_campship.dart';
+import '../DashBoard/nrPlayerAntiDoping.dart';
+import '../DashBoard/top10LessControlledByTeam.dart.dart';
+import '../DashBoard/top5PlayersByCampship.dart';
 
 class TopsPage extends StatelessWidget {
   @override
@@ -75,7 +75,7 @@ class TopsPage extends StatelessWidget {
                       CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage2()),
+                      MaterialPageRoute(builder: (context) => top5PlayersByChampionship()),
                     );
                   }),
                   // jogadores com menos registos por competição
@@ -83,7 +83,7 @@ class TopsPage extends StatelessWidget {
                       CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage3()),
+                      MaterialPageRoute(builder: (context) => top10LessControlledByTeam()),
                     );
                   }),
                   // jogadores com teste positivo
@@ -100,7 +100,7 @@ class TopsPage extends StatelessWidget {
                       () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage4()),
+                      MaterialPageRoute(builder: (context) => NumberOfPlayersWithControlOnLast30Days()),
                     );
                   }),
                 ],

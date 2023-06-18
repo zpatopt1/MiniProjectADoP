@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import '../Models/player.dart';
 
-class PlayerService {
+class PlayersNotControlledAPI {
   static Future<List<Player>> getPlayersNotControlled(int days) async {
     final url = 'http://localhost:3000/players-tested/$days';
 

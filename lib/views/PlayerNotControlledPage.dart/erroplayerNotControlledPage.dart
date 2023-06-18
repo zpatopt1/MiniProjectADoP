@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Models/player.dart';
-import '../../data/playerNotControlledAPI.dart';
+import '../../data/playersNotControlledAPI.dart';
 
 class PlayerNotControlledPage extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _PlayerNotControlledPageState extends State<PlayerNotControlledPage> {
 
     try {
       // Tentar buscar jogadores não controlados
-      players = await PlayerService.getPlayersNotControlled(days);
+      players = await PlayersNotControlledAPI.getPlayersNotControlled(days);
     } catch (error) {
       // Escrever  erro
       print('Error: $error');

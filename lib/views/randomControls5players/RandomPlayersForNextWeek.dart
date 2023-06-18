@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../data/5randomplayersAPI.dart';
+import '../../data/5randomPlayerAPI.dart';
 
-class RandomPlayer_1week extends StatefulWidget {
+class RandomPlayerNextWeek extends StatefulWidget {
   @override
   _RandomPlayer_1weekState createState() => _RandomPlayer_1weekState();
 }
 
-class _RandomPlayer_1weekState extends State<RandomPlayer_1week> {
+class _RandomPlayer_1weekState extends State<RandomPlayerNextWeek> {
   List<dynamic> randomPlayers = [];
 
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DashBoard/quantidadeJogadoresPorClube.dart';
+import '../DashBoard/NumberOfPlayersByClub.dart';
 import '../EditPage/addPlayers.dart';
 import '../EditPage/deletePlayer.dart';
 import '../EditPage/editPlayers.dart';
@@ -105,7 +105,7 @@ class PlayersPage extends StatelessWidget {
                       CupertinoIcons.profile_circled, Colors.black, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardPage1()),
+                      MaterialPageRoute(builder: (context) => NumberOfPlayersByClub()),
                     );
                   }),
                 ],

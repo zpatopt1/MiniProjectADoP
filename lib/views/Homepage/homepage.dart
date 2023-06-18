@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DashBoard/quantidadeJogadoresPorClube.dart';
-import '../PlayerNotControlledPage.dart/playerNotControlledPage.dart';
+import '../DashBoard/NumberOfPlayersByClub.dart';
+import '../PlayerNotControlledPage.dart/erroplayerNotControlledPage.dart';
 import '../categoria/players.dart';
 import '../categoria/tops.dart';
-import '../randomControls5players/5randomplayerscontrolpage.dart';
+import '../randomControls5players/RandomPlayersForNextWeek.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -96,7 +96,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RandomPlayer_1week()),
+                            builder: (context) => RandomPlayerNextWeek()),
                       );
                     },
                   ),
